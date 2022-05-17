@@ -49,6 +49,13 @@ class Builder extends Component {
     let Opening = () => {this.setState({modal: true})}
 
     let Closing = () => {this.setState({modal: false})}
+    
+    let order = () => {alert('Сongratulations on your purchase')}
+
+
+    let increment = () => {
+      this.setState({ count: this.state.count += 1 });
+    };
 
     let addItem = (e) => {
       e.preventDefault()
@@ -89,6 +96,8 @@ class Builder extends Component {
           opening={this.state.modal}
           closing={Closing}
           Items={this.state.newArray}
+          order={order}
+          increment={increment}
         />
       </>
     )

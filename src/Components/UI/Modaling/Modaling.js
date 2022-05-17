@@ -1,7 +1,7 @@
 import React from "react";
 import './Modaling.css'
 
-export default function Modaling(props) {
+function Modaling(props) {
   return(
     <div className="modal"
     style={{
@@ -24,7 +24,7 @@ export default function Modaling(props) {
             </div>
             <div className="d-flex">
               <button className="modal__btn">-</button>
-              <button className="modal__btn">+</button>
+              <button onClick={props.increment} className="modal__btn">+</button> 
             </div>
           </li>
           );
@@ -33,13 +33,15 @@ export default function Modaling(props) {
         </ul>
         <div className="modal__totalbox d-flex justify-content-between align-items-center">
           <p>Total Amount</p>
-          <p>$39.49</p>
+          <p>$0.00</p>
         </div>
         <div className="d-flex float-end">
           <button onClick={props.closing} className="modal__btnclose">Close</button>
-          <button className="modal__btnorder">Order</button>
+          <button onClick={props.order} className="modal__btnorder">Order</button>
         </div>
       </div>
     </div>
   )
 }
+
+export default Modaling
