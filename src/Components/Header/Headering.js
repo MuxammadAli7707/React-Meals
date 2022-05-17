@@ -16,6 +16,7 @@ function Headering(props) {
           <i className='bx bxs-cart'></i>
           <span className='header__text'>Your Cart</span>
           <span className='header__count'>{props.countings}</span>
+          <p>Hello</p>
         </button>
       </div>
     </div>
