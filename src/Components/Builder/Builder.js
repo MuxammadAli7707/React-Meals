@@ -5,6 +5,8 @@ import Price from '../Main/Price';
 import Modaling from '../UI/Modaling/Modaling';
 
 
+let arr = []
+let allPrice = 0
 class Builder extends Component {
   constructor(props) {
     super()
@@ -52,34 +54,65 @@ class Builder extends Component {
     
     let order = () => {alert('Сongratulations on your purchase')}
 
-
-    let increment = () => {
-      this.setState({ count: this.state.count += 1 });
-    };
-
     let addItem = (e) => {
       e.preventDefault()
       let idx = e.target.id
       let valuing = e.target[0].value
       let newObj = []
-      let arr = []
       this.state.obj.map(item => {
         newObj.push(item)
       })
-
-      newObj.map(item => {
-        if(+idx === item.id) {
-          item.count += +valuing
-          arr.push(item)
-        }
-      })
-
-      this.setState({newArray: [...this.state.newArray, ...arr]})
+    
+      let existFood = arr.find(food => food.id === +idx)
+      if(!existFood) {
+        let foodFromNewArr = newObj.find(food => food.id === +idx)
+        foodFromNewArr.count += +valuing
+        arr.push(foodFromNewArr)
+      } else {
+        existFood.count += +valuing
+      }
+    
+      this.setState({newObj: [...arr]})
       this.setState({obj: [...newObj]})
     }
-
     let Countings = 0
     this.state.obj.map(item => {Countings += +item.count})
+
+    let totalPrice = 0
+    this.state.newArray.map(pri => {
+      let price = 0
+      let coun = 0
+
+      price += +pri.price
+      coun += +pri.count
+      allPrice = coun * price
+
+      totalPrice += allPrice
+
+    })
+
+    let minusBtn = (e) => {
+      let idd = e.nativeEvent.path[1].id
+      arr.map(item => {
+        if(item.id === +idd) {
+          item.count -= 1
+          if(item.count === 0) {
+           arr = arr.filter( el => el.id !== +idd);
+          }
+        }
+      })
+      this.setState({newArray: [...arr]})
+    }
+
+    let plusBtn = (e) => {
+      let idd = e.nativeEvent.path[1].id
+      arr.map(item => {
+        if(item.id === +idd) {
+          item.count += 1
+        }
+      })
+      this.setState({newArray: [...arr]})
+    }
 
 
     return(
@@ -98,7 +131,9 @@ class Builder extends Component {
           closing={Closing}
           Items={this.state.newArray}
           order={order}
-          increment={increment}
+          minus={minusBtn}
+          plus={plusBtn}
+          total={totalPrice}
         />
       </>
     )

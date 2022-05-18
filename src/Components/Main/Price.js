@@ -8,7 +8,7 @@ function Price(props){
         {props.obj.map((item, i) => {
           return (
             <>
-              <li key={i+1} className="product-item d-flex justify-content-between">
+              <li key={i+3} className="product-item d-flex justify-content-between">
                 <div>
                   <h5 className='product-name'>{item.name}</h5>
                   <p className="mb-2 product-desc">{item.ingridient}</p>

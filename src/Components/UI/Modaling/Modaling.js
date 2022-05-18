@@ -14,7 +14,7 @@ function Modaling(props) {
         <ul className="modal__list">
           {props.Items.map((item, i) => {
             return (
-            <li key={i+1} className="modal__item d-flex justify-content-between align-items-center">
+            <li key={i+3} className="modal__item d-flex justify-content-between align-items-center">
             <div>
               <h2 className="modal__title">{item.name}</h2>
               <div className="modal__pricebox d-flex justify-content-between align-items-center">
@@ -22,8 +22,8 @@ function Modaling(props) {
                 <p className="modal__count">x {item.count}</p>
               </div>
             </div>
-            <div className="d-flex">
-              <button className="modal__btn">-</button>
+            <div id={item.id} className="d-flex">
+              <button onClick={props.minus} className="modal__btn">-</button>
               <button onClick={props.plus} className="modal__btn">+</button> 
             </div>
           </li>
@@ -33,7 +33,7 @@ function Modaling(props) {
         </ul>
         <div className="modal__totalbox d-flex justify-content-between align-items-center">
           <p>Total Amount</p>
-          <p>$0.00</p>
+          <p>${props.total.toFixed(2)}</p>
         </div>
         <div className="d-flex float-end">
           <button onClick={props.closing} className="modal__btnclose">Close</button>
