@@ -69,7 +69,7 @@ class Builder extends Component {
 
       newObj.map(item => {
         if(+idx === item.id) {
-          item.count = valuing
+          item.count += +valuing
           arr.push(item)
         }
       })
@@ -80,6 +80,7 @@ class Builder extends Component {
 
     let Countings = 0
     this.state.obj.map(item => {Countings += +item.count})
+
 
     return(
       <>

@@ -24,7 +24,7 @@ function Modaling(props) {
             </div>
             <div className="d-flex">
               <button className="modal__btn">-</button>
-              <button onClick={props.increment} className="modal__btn">+</button> 
+              <button onClick={props.plus} className="modal__btn">+</button> 
             </div>
           </li>
           );
