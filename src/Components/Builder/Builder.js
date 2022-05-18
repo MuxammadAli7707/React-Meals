@@ -63,16 +63,16 @@ class Builder extends Component {
         newObj.push(item)
       })
     
-      let existFood = arr.find(food => food.id === +idx)
-      if(!existFood) {
-        let foodFromNewArr = newObj.find(food => food.id === +idx)
-        foodFromNewArr.count += +valuing
-        arr.push(foodFromNewArr)
+      let elements = arr.find(item => item.id === +idx)
+      if(!elements) {
+        let elementsArray = newObj.find(item => item.id === +idx)
+        elementsArray.count += +valuing
+        arr.push(elementsArray)
       } else {
-        existFood.count += +valuing
+        elements.count += +valuing
       }
     
-      this.setState({newObj: [...arr]})
+      this.setState({newArray: [...arr]})
       this.setState({obj: [...newObj]})
     }
     let Countings = 0
